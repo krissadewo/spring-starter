@@ -1,12 +1,21 @@
-package id.or.greenlabs.spring.starter.module.stock.config;
+package id.or.greenlabs.spring.starter.module;
 
 import id.or.greenlabs.spring.starter.common.DummyData;
+import id.or.greenlabs.spring.starter.module.category.repository.CategoryRepository;
 import io.netty.channel.ChannelOption;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
@@ -17,13 +26,20 @@ import java.time.Duration;
 
 /**
  * @author krissadewo
- * @date 3/4/22 8:54 AM
+ * @date 2/24/22 2:06 PM
  */
-@SpringBootApplication
+/*@ExtendWith(SpringExtension.class)
+@SpringBootApplication(exclude = {JmxAutoConfiguration.class})
+@ContextConfiguration(
+    loader = AnnotationConfigContextLoader.class,
+    classes = {
+        CategoryRepository.class,
+    })*/
+//@SpringBootTest
 public class ApplicationTests {
 
-    public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(id.or.greenlabs.spring.starter.module.stock.config.ApplicationTests.class);
+  /*  public static void main(String[] args) {
+        SpringApplication springApplication = new SpringApplication(ApplicationTests.class);
 
         try {
             if (args.length > 0) { //activating profiles
@@ -64,5 +80,5 @@ public class ApplicationTests {
     @Bean
     public DummyData dummyData() {
         return new DummyData();
-    }
+    }*/
 }

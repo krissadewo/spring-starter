@@ -84,7 +84,7 @@ public class ProductRepository extends AbstractGenericRepository<Product> {
                     }
 
                     if (param.getName() != null) {
-                        criteria.and("code").is(param.getCode());
+                        criteria.and("name").is(param.getName());
                     }
 
                     break;

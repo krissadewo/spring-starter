@@ -5,5 +5,5 @@ spring:
 
 logging:
   file:
-    path: /tmp/etle/log/core/
+    path: /tmp/log/core/
 

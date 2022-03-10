@@ -4,35 +4,33 @@ import id.or.greenlabs.spring.starter.common.DummyData;
 import id.or.greenlabs.spring.starter.config.MongoConfig;
 import id.or.greenlabs.spring.starter.document.Category;
 import id.or.greenlabs.spring.starter.document.Product;
-import id.or.greenlabs.spring.starter.module.category.config.ApplicationTests;
+import id.or.greenlabs.spring.starter.module.ApplicationTests;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
  * @author krissadewo
  * @date 3/1/22 9:46 AM
  */
-@SpringBootTest(
-    classes = {
-        ApplicationTests.class
-    }
-)
+@SpringBootTest
+@EnableAutoConfiguration
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Import(MongoConfig.class)
 @TestPropertySource(locations = "classpath:application-test.properties")
 @ActiveProfiles("test")
 public class BaseTest {
 
-    @Autowired
-    protected DummyData dummyData;
+    protected DummyData dummyData = new DummyData();
 
     @Autowired
     private ReactiveMongoTemplate reactiveMongoTemplate;

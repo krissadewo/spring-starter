@@ -1,7 +1,9 @@
 package id.or.greenlabs.spring.starter.module.category.repository;
 
 import com.mongodb.client.result.UpdateResult;
+import id.or.greenlabs.spring.starter.common.DefaultException;
 import id.or.greenlabs.spring.starter.common.Mode;
+import id.or.greenlabs.spring.starter.common.StatusCode;
 import id.or.greenlabs.spring.starter.document.Category;
 import id.or.greenlabs.spring.starter.repository.function.FunctionBuildCriteria;
 import id.or.greenlabs.spring.starter.repository.generic.AbstractGenericRepository;
@@ -65,6 +67,8 @@ public class CategoryRepository extends AbstractGenericRepository<Category> {
                     criteria.and("id").is(param.getId());
 
                     break;
+                default:
+                    throw new DefaultException(StatusCode.INPUT_NOT_VALID);
             }
 
             return criteria;

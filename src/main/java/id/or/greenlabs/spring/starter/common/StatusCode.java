@@ -11,6 +11,8 @@ public interface StatusCode {
     String OPERATION_SUCCESS = "1112";
     String OPERATION_FAILED = "1113";
 
+    String INPUT_NOT_VALID = "3000";
+
     String SERVICE_UNVAILABLE = "0000";
 
     String ILLEGAL_ACCESS = "0606";
