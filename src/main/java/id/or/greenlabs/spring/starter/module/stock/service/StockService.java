@@ -1,6 +1,5 @@
 package id.or.greenlabs.spring.starter.module.stock.service;
 
-import id.or.greenlabs.spring.starter.assembler.dto.OrderDto;
 import id.or.greenlabs.spring.starter.assembler.dto.StockDto;
 import id.or.greenlabs.spring.starter.assembler.wrapper.StockWrapper;
 import id.or.greenlabs.spring.starter.module.stock.port.StockAdapter;

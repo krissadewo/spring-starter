@@ -109,13 +109,6 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>default-report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>jacoco-check</id>
                         <goals>
                             <goal>check</goal>
@@ -145,6 +138,7 @@
                         <exclude>id/or/greenlabs/spring/starter/document/**</exclude>
                         <exclude>id/or/greenlabs/spring/starter/repository/**</exclude>
                         <exclude>id/or/greenlabs/spring/starter/util/**</exclude>
+                        <exclude>id/or/greenlabs/spring/starter/module/kafka/wrapper/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>

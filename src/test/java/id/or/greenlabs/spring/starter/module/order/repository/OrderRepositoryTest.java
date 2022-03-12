@@ -30,7 +30,7 @@ class OrderRepositoryTest extends BaseTest {
     @Autowired
     private ProductRepository productRepository;
 
-    private static Product product;
+    private Product product;
 
     @Test
     @org.junit.jupiter.api.Order(1)

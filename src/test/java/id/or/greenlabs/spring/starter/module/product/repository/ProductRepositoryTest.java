@@ -30,9 +30,9 @@ class ProductRepositoryTest extends BaseTest {
     @Autowired
     private ProductRepository productRepository;
 
-    static Category category;
+    private Category category;
 
-    static Product product;
+    private Product product;
 
     @Test
     @Order(1)

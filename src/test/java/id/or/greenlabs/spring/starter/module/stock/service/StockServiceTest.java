@@ -1,9 +1,8 @@
-package id.or.greenlabs.spring.starter.module.order.service;
+package id.or.greenlabs.spring.starter.module.stock.service;
 
-import id.or.greenlabs.spring.starter.assembler.dto.OrderDto;
-import id.or.greenlabs.spring.starter.module.order.config.BaseTest;
-import id.or.greenlabs.spring.starter.module.order.repository.OrderRepository;
-import id.or.greenlabs.spring.starter.module.product.repository.ProductRepository;
+import id.or.greenlabs.spring.starter.assembler.dto.StockDto;
+import id.or.greenlabs.spring.starter.module.stock.config.BaseTest;
+import id.or.greenlabs.spring.starter.module.stock.repository.StockRepository;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,37 +10,43 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import reactor.test.StepVerifier;
 
+import java.util.List;
+
 /**
  * @author krissadewo
- * @date 3/4/22 10:10 AM
+ * @date 3/11/22 9:45 AM
  */
 @ContextConfiguration(
     loader = AnnotationConfigContextLoader.class,
     classes = {
-        ProductRepository.class,
-        OrderRepository.class,
-        OrderService.class
+        StockRepository.class,
+        StockService.class
     })
-class OrderServiceTest extends BaseTest {
+class StockServiceTest extends BaseTest {
 
     @Autowired
-    private OrderService service;
+    private StockService service;
+
+    private List<StockDto> stockDtos;
 
     @Test
     @Order(1)
-    void order() {
+    void save() {
         StepVerifier
-            .create(service.save(dummyData.orderDtos()))
+            .create(service.save(dummyData.stockDtos(dummyData.orderDtos())))
             .thenConsumeWhile(result -> {
-                return result.size() > 0;
+                stockDtos = result;
+
+                return !stockDtos.isEmpty();
             })
             .verifyComplete();
     }
 
     @Test
+    @Order(2)
     void findBy() {
         StepVerifier
-            .create(service.findBy(new OrderDto(), 10, 0))
+            .create(service.findBy(new StockDto(), 10, 0))
             .thenConsumeWhile(result -> {
                 return result.getId() != null;
             })

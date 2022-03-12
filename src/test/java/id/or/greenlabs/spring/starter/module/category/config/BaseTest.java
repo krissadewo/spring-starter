@@ -3,10 +3,7 @@ package id.or.greenlabs.spring.starter.module.category.config;
 import id.or.greenlabs.spring.starter.common.DummyData;
 import id.or.greenlabs.spring.starter.document.Category;
 import id.or.greenlabs.spring.starter.module.ApplicationTests;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +21,7 @@ import org.springframework.test.context.TestPropertySource;
 @EnableAutoConfiguration
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestPropertySource(locations = "classpath:application-test.properties")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ActiveProfiles("test")
 public class BaseTest extends ApplicationTests {
 

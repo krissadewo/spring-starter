@@ -26,7 +26,7 @@ class CategoryServiceTest extends BaseTest {
     @Autowired
     private CategoryService service;
 
-    static CategoryDto category;
+    private CategoryDto category;
 
     @Test
     @Order(1)

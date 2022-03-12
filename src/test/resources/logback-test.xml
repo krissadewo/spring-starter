@@ -11,10 +11,6 @@
         </layout>
     </appender>
 
-    <logger name="org.springframework.test.context" level="error"/>
-    <logger name="org.springframework.data.convert" level="error"/>
-    <logger name="org.springframework.beans" level="error"/>
-
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </root>

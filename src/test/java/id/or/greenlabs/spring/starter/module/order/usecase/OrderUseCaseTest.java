@@ -51,7 +51,7 @@ class OrderUseCaseTest extends BaseTest {
     @Order(1)
     void order() {
         StepVerifier
-            .create(orderProduct.execute(dummyData.orders()))
+            .create(orderProduct.execute(dummyData.orderDtos()))
             .thenConsumeWhile(Objects::nonNull)
             .verifyComplete();
     }

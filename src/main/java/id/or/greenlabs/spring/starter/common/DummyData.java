@@ -3,6 +3,7 @@ package id.or.greenlabs.spring.starter.common;
 import id.or.greenlabs.spring.starter.assembler.dto.CategoryDto;
 import id.or.greenlabs.spring.starter.assembler.dto.OrderDto;
 import id.or.greenlabs.spring.starter.assembler.dto.ProductDto;
+import id.or.greenlabs.spring.starter.assembler.dto.StockDto;
 import id.or.greenlabs.spring.starter.document.Category;
 import id.or.greenlabs.spring.starter.document.Order;
 import id.or.greenlabs.spring.starter.document.Product;
@@ -70,7 +71,7 @@ public class DummyData {
         return Collections.singletonList(order);
     }
 
-    public List<OrderDto> orders() {
+    public List<OrderDto> orderDtos() {
         List<OrderDto> orders = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
@@ -93,6 +94,21 @@ public class DummyData {
             Stock stock = new Stock();
             stock.setOrderId(order.getId());
             stock.setProductId(order.getProductId());
+            stock.setQty(order.getQty());
+
+            stocks.add(stock);
+        });
+
+        return stocks;
+    }
+
+    public List<StockDto> stockDtos(List<OrderDto> orders) {
+        List<StockDto> stocks = new ArrayList<>();
+
+        orders.forEach(order -> {
+            StockDto stock = new StockDto();
+            stock.setOrder(new OrderDto(new ObjectId().toHexString()));
+            stock.setProduct(new ProductDto(order.getProduct().getId()));
             stock.setQty(order.getQty());
 
             stocks.add(stock);

@@ -39,7 +39,7 @@ class ProductUseCaseTest extends BaseTest {
     @Autowired
     private Save save;
 
-    private static ProductDto product;
+    private ProductDto product;
 
     @Order(1)
     @Test

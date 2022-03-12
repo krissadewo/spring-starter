@@ -34,9 +34,9 @@ class ProductServiceTest extends BaseTest {
     @Autowired
     private CategoryService categoryService;
 
-    private static ProductDto product;
+    private ProductDto product;
 
-    private static CategoryDto category;
+    private CategoryDto category;
 
     @Test
     @Order(1)

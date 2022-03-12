@@ -33,7 +33,7 @@ class CategoryUseCaseTest extends BaseTest {
     @Autowired
     private Save save;
 
-    static CategoryDto category;
+    private CategoryDto category;
 
     @Order(1)
     @Test

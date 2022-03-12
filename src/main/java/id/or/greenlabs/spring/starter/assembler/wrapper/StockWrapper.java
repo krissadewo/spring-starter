@@ -3,7 +3,6 @@ package id.or.greenlabs.spring.starter.assembler.wrapper;
 import id.or.greenlabs.spring.starter.assembler.dto.StockDto;
 import id.or.greenlabs.spring.starter.assembler.generic.Assembler;
 import id.or.greenlabs.spring.starter.document.Stock;
-import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,7 +28,7 @@ public class StockWrapper implements Assembler<StockDto, Stock> {
             dto.setOrder(new OrderWrapper().toDto(entity.getOrder()));
         }
 
-        return null;
+        return dto;
     }
 
     @Override
@@ -45,7 +44,10 @@ public class StockWrapper implements Assembler<StockDto, Stock> {
 
     @Override
     public Stock toParam(StockDto dto) {
-        return null;
+        Stock stock = new Stock();
+        stock.setId(dto.getId());
+
+        return stock;
     }
 
     @Override
@@ -53,10 +55,7 @@ public class StockWrapper implements Assembler<StockDto, Stock> {
         Stock document = new Stock();
         document.setOrderId(dto.getOrder().getId());
         document.setQty(dto.getQty());
-
-        if (dto.getOrder().getProduct() != null) {
-            document.setProductId(dto.getOrder().getProduct().getId());
-        }
+        document.setProductId(dto.getProduct().getId());
 
         return document;
     }

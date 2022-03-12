@@ -34,7 +34,7 @@ public abstract class AbstractGenericRepository<T extends DocumentAware> extends
         return count(buildQuery().apply(param, Mode.FIND));
     }
 
-    public FunctionBuildQuery<T, Mode, Query> buildQuery() {
+    protected FunctionBuildQuery<T, Mode, Query> buildQuery() {
         return (param, mode) -> Query.query(buildCriteria().apply(param, mode));
     }
 

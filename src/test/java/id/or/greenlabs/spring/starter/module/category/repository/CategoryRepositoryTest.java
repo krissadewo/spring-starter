@@ -7,7 +7,6 @@ import id.or.greenlabs.spring.starter.module.category.config.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
@@ -28,7 +27,7 @@ class CategoryRepositoryTest extends BaseTest {
     @Autowired
     private CategoryRepository repository;
 
-    static Category category;
+    private Category category;
 
     @Test
     @Order(1)
@@ -119,7 +118,7 @@ class CategoryRepositoryTest extends BaseTest {
             .verifyComplete();
     }
 
-   /* @Test
+ /*   @Test
     @Order(7)
     void buildCriteria() {
         Assertions.assertThrows(DefaultException.class,

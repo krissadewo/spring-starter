@@ -31,4 +31,10 @@ public class OrderDto implements Serializable {
     public enum Type {
         SELL, BUY
     }
+
+    public OrderDto(String id) {
+        this.id = id;
+    }
+
+
 }
