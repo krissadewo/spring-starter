@@ -35,9 +35,9 @@ public class OrderListener {
     void listenOrder() {
         KafkaReceiver.create(receiverOptions())
             .receive()
-            .flatMap(record -> {
-                ReceiverOffset offset = record.receiverOffset();
-                List<OrderDto> dtos = JsonUtil.fromJson((String) record.value(), new TypeReference<>() {
+            .flatMap(result -> {
+                ReceiverOffset offset = result.receiverOffset();
+                List<OrderDto> dtos = JsonUtil.fromJson((String) result.value(), new TypeReference<>() {
                 });
 
                 return Mono.just(save.execute(dtos));

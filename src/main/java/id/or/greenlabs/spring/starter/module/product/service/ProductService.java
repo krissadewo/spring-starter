@@ -30,8 +30,8 @@ public class ProductService implements ProductAdapter {
     @Override
     public Mono<String> update(ProductDto dto) {
         return repository.update(new ProductWrapper().toDocument(dto))
-            .map(updateResult -> {
-                if (updateResult.getModifiedCount() > 0) {
+            .map(result -> {
+                if (result.getModifiedCount() > 0) {
                     return StatusCode.OPERATION_SUCCESS;
                 }
 

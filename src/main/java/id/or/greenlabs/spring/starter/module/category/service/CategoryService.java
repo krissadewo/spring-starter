@@ -30,8 +30,8 @@ public class CategoryService implements CategoryAdapter {
     @Override
     public Mono<String> update(CategoryDto dto) {
         return repository.update(new CategoryWrapper().toDocument(dto))
-            .map(updateResult -> {
-                if (updateResult.getModifiedCount() > 0) {
+            .map(result -> {
+                if (result.getModifiedCount() > 0) {
                     return StatusCode.OPERATION_SUCCESS;
                 }
 
@@ -42,8 +42,8 @@ public class CategoryService implements CategoryAdapter {
     @Override
     public Mono<String> delete(String id) {
         return repository.update(new CategoryWrapper().toDocument(new CategoryDto(id)))
-            .map(updateResult -> {
-                if (updateResult.getModifiedCount() > 0) {
+            .map(result -> {
+                if (result.getModifiedCount() > 0) {
                     return StatusCode.OPERATION_SUCCESS;
                 }
 
